@@ -26,10 +26,11 @@ public class Scoring : MonoBehaviour {
 
 	void OnGUI () {
 		GUI.skin.label.fontSize = GUI.skin.box.fontSize = GUI.skin.button.fontSize = fontSize;
-		GUI.Box (new Rect (0, 0, 500, 150), "Score: " + score + "\n" + "Multiplier: x" + multiplier);
+		GUI.Button (new Rect (0, 0, 250, 150), "Menu");
+		GUI.Box (new Rect (250, 0, 500, 150), "Score: " + score + "\n" + "Multiplier: x" + multiplier);
 		//GUI.Box (new Rect (0, 75, 500, 75), "Multiplier: " + multiplier);
-		GUI.Button (new Rect (Screen.width - 425 - widthOffset, Screen.height - 100 - heightOffset, 250, 150), "Left");
-		GUI.Button (new Rect (Screen.width - 175 - widthOffset, Screen.height - 100 - heightOffset, 250, 150), "Right");
+		GUI.Button (new Rect (Screen.width - 475 - widthOffset, Screen.height - 100 - heightOffset, 250, 150), "Left");
+		GUI.Button (new Rect (Screen.width - 200 - widthOffset, Screen.height - 100 - heightOffset, 250, 150), "Right");
 	}
 
 	void scoreIncrement () {
