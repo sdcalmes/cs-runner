@@ -38,7 +38,6 @@ public class MoveCar : MonoBehaviour {
 
 		//fadeScr.EndScene (0);
 		//SceneManager.LoadScene(TestScene);
-		System.Threading.Thread.Sleep(2000);
 		Application.LoadLevel(1);
 	}
 

@@ -71,7 +71,7 @@ public class Scoring : MonoBehaviour {
 		} else {
 			GUI.Box (new Rect (0, 0, 600, 150), "Game Over!\n" + "Your score was " + score);
 			if (GUI.Button (new Rect (Screen.width - 250 - widthOffset, Screen.height - 100 - heightOffset, 300, 150), "Start Over")) {
-				Application.LoadLevel(0);
+				Application.LoadLevel(1);
 	
 			}
 		}
