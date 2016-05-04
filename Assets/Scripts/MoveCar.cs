@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MoveCar : MonoBehaviour {
 
@@ -34,8 +35,11 @@ public class MoveCar : MonoBehaviour {
 	public void StartButtonPressed(){
 		fast = true;
 		body2d.velocity = velocity;
-		//fadeScr.EndScene (0);
 
+		//fadeScr.EndScene (0);
+		//SceneManager.LoadScene(TestScene);
+		System.Threading.Thread.Sleep(2000);
+		Application.LoadLevel(1);
 	}
 
 	void Update(){

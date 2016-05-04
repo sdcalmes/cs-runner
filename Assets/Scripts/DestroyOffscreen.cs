@@ -4,6 +4,7 @@ using System.Collections;
 public class DestroyOffscreen : MonoBehaviour {
 
 	public float offset = 16f;
+	public bool isGameScene = false;
 
 	private bool offscreen;
 	private float offscreenX = 0;
@@ -14,7 +15,11 @@ public class DestroyOffscreen : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		offscreenX = (Screen.width / PixelPerfectCamera.pixelsToUnits) / 2 + offset;
+		if (!isGameScene) {
+			offscreenX = (Screen.width / PixelPerfectCamera.pixelsToUnits) / 2 + offset;
+		} else {
+			offscreenX = 10;
+		}
 	}
 
 	// Update is called once per frame

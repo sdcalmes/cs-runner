@@ -1036,6 +1036,7 @@ MonoBehaviour:
   - {fileID: 178958, guid: a4bb3f2926395a54797b0bcca287b0ff, type: 2}
   delay: 0.8
   active: 1
+  isCoin: 0
 --- !u!4 &718270516
 Transform:
   m_ObjectHideFlags: 0
@@ -2095,6 +2096,7 @@ MonoBehaviour:
   - {fileID: 172848, guid: 6ad1733a93421d046b349e1f34ea4ad5, type: 2}
   delay: 0.55
   active: 1
+  isCoin: 0
 --- !u!4 &1730602001
 Transform:
   m_ObjectHideFlags: 0
