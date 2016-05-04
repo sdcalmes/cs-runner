@@ -8,6 +8,7 @@ public class MenuScript : MonoBehaviour {
 	public Button startText;
 	public Button exitText;
 	public Button settingsText;
+	private int highScore;
 
 	// Use this for initialization
 	void Start () {
@@ -15,8 +16,14 @@ public class MenuScript : MonoBehaviour {
 		startText = startText.GetComponent<Button>();
 		exitText = exitText.GetComponent<Button>();
 		settingsText = settingsText.GetComponent<Button>();
+		highScore = PlayerPrefs.GetInt ("highscore");
+	
 		quitMenu.enabled = false;
 	}
+
+//	void OnGUI(){
+//		GUI.Box (new Rect (445, 225, 350, 75), "Highscore: " + highScore);
+//	}
 
 	public void ExitPress(){
 		quitMenu.enabled = true;
@@ -35,6 +42,12 @@ public class MenuScript : MonoBehaviour {
 	public void StartLevel(){
 		//make the car drive off
 		//Application.LoadLevel(1);
+	}
+
+	public void ResetScore(){
+		PlayerPrefs.SetInt ("highscore", 0);
+		//OnGUI ();
+		//highScore = PlayerPrefs.GetInt ("highscore");
 	}
 
 	public void ExitGame(){

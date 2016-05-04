@@ -50,7 +50,8 @@ public class Spawner : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		gOver = endGameDetect.GetComponent<CollisionDetection>().gameOver;
+		if(isCoin || isObstacle)
+			gOver = endGameDetect.GetComponent<CollisionDetection>().gameOver;
 		if (gOver) {
 			active = false;
 		}

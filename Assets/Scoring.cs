@@ -11,6 +11,8 @@ public class Scoring : MonoBehaviour {
 	public int heightOffset;
 	GameObject thePlayer;
 	GameObject endGameDetect;
+	int oldHighScore;
+	int newHighScore;
 	bool gOver;
 
 	SpriteRenderer sr;
@@ -24,6 +26,7 @@ public class Scoring : MonoBehaviour {
 		widthOffset = 100;
 		heightOffset = 100;
 		InvokeRepeating ("scoreIncrement", 1, 1);
+		oldHighScore = PlayerPrefs.GetInt ("highscore", 0);
 		endGameDetect = GameObject.Find ("EndGameCollider");
 		thePlayer = GameObject.Find ("Character");
 		sr = thePlayer.GetComponent<SpriteRenderer> ();
@@ -33,6 +36,11 @@ public class Scoring : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		gOver = endGameDetect.GetComponent<CollisionDetection>().gameOver;
+		if (score > oldHighScore) {
+			newHighScore = score;
+		}
+		if (gOver)
+			GameOver ();
 	}
 
 	void OnGUI () {
@@ -42,7 +50,7 @@ public class Scoring : MonoBehaviour {
 			Vector3 moveLeft = new Vector3 (-.5f, .5f, 0);
 			Vector3 moveRight = new Vector3 (.5f, -.5f, 0);
 			GUI.skin.label.fontSize = GUI.skin.box.fontSize = GUI.skin.button.fontSize = fontSize;
-			GUI.Box (new Rect (0, 0, 500, 150), "Score: " + score + "\n" + "Multiplier: x" + multiplier);
+			GUI.Box (new Rect (0, 0, 500, 225), "Score: " + score + "\n" + "Multiplier: x" + multiplier + "\n" + "Highscore: " + oldHighScore);
 			//GUI.Box (new Rect (0, 75, 500, 75), "Multiplier: " + multiplier);
 			if (GUI.Button (new Rect (Screen.width - 425 - widthOffset, Screen.height - 100 - heightOffset, 250, 150), "Left")) {
 				Debug.Log ("You clicked left");
@@ -60,12 +68,26 @@ public class Scoring : MonoBehaviour {
 				}
 
 			}
+		} else {
+			GUI.Box (new Rect (0, 0, 600, 150), "Game Over!\n" + "Your score was " + score);
+			if (GUI.Button (new Rect (Screen.width - 250 - widthOffset, Screen.height - 100 - heightOffset, 300, 150), "Start Over")) {
+				Application.LoadLevel(1);
+	
+			}
 		}
 			
 	}
 
 	void scoreIncrement () {
-		score += 25 * multiplier;
+		if (!gOver) {
+			score += 25 * multiplier;
+		}
+	}
+
+	void GameOver(){
+		if (score > oldHighScore) {
+			PlayerPrefs.SetInt ("highscore", score);
+		}
 	}
 
 }
