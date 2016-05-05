@@ -8,7 +8,6 @@ public class MoveCar : MonoBehaviour {
 	private Rigidbody2D body2d;
 	private bool fast = false;
 
-	ScreenFader fadeScr;
 	public int SceneNumb = 1;
 
 	void Awake(){
@@ -27,7 +26,6 @@ public class MoveCar : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		fadeScr = GameObject.FindObjectOfType<ScreenFader> ();
 		//Debug.Log (fadeScr);
 	}
 	

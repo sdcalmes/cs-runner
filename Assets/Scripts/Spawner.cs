@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		theScore = GameObject.Find ("_ScoringSystem");
-		endGameDetect = GameObject.Find ("EndGameCollider");
+		endGameDetect = GameObject.Find ("Character");
 		StartCoroutine(PrefabGenerator());
 	}
 
@@ -58,7 +58,7 @@ public class Spawner : MonoBehaviour {
 		if (isObstacle) {
 			if ((theScore.GetComponent<Scoring> ().score % 250) == 0) {
 				if (delay > .5f) {
-					Debug.Log ("Lowering Delay!");
+					//Debug.Log ("Lowering Delay!");
 					theScore.GetComponent<Scoring> ().score += 25;
 					delay -= .2f;
 				}

@@ -8,6 +8,7 @@ public class MenuScript : MonoBehaviour {
 	public Button startText;
 	public Button exitText;
 	public Button settingsText;
+	public Text hsText;
 	private int highScore;
 
 	// Use this for initialization
@@ -16,9 +17,20 @@ public class MenuScript : MonoBehaviour {
 		startText = startText.GetComponent<Button>();
 		exitText = exitText.GetComponent<Button>();
 		settingsText = settingsText.GetComponent<Button>();
-		highScore = PlayerPrefs.GetInt ("highscore");
-	
+		highScore = PlayerPrefs.GetInt ("highscore", 0);
+		hsText.text = "";
 		quitMenu.enabled = false;
+		SetHS ();
+	}
+
+	void SetHS(){
+		Debug.Log (highScore);
+		hsText.text = "Current Highscore: " + highScore;
+		Debug.Log (hsText.text);
+	}
+
+	void Update(){
+
 	}
 
 //	void OnGUI(){
@@ -46,6 +58,9 @@ public class MenuScript : MonoBehaviour {
 
 	public void ResetScore(){
 		PlayerPrefs.SetInt ("highscore", 0);
+		highScore = PlayerPrefs.GetInt ("highscore", 0);
+		hsText.text = "Current Highscore: " + highScore;
+
 		//OnGUI ();
 		//highScore = PlayerPrefs.GetInt ("highscore");
 	}

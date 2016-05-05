@@ -27,7 +27,7 @@ public class Scoring : MonoBehaviour {
 		heightOffset = 100;
 		InvokeRepeating ("scoreIncrement", 1, 1);
 		oldHighScore = PlayerPrefs.GetInt ("highscore", 0);
-		endGameDetect = GameObject.Find ("EndGameCollider");
+		endGameDetect = GameObject.Find ("Character");
 		thePlayer = GameObject.Find ("Character");
 		sr = thePlayer.GetComponent<SpriteRenderer> ();
 
@@ -53,7 +53,7 @@ public class Scoring : MonoBehaviour {
 			GUI.Box (new Rect (0, 0, 500, 225), "Score: " + score + "\n" + "Multiplier: x" + multiplier + "\n" + "Highscore: " + oldHighScore);
 			//GUI.Box (new Rect (0, 75, 500, 75), "Multiplier: " + multiplier);
 			if (GUI.Button (new Rect (Screen.width - 425 - widthOffset, Screen.height - 100 - heightOffset, 250, 150), "Left")) {
-				Debug.Log ("You clicked left");
+				//Debug.Log ("You clicked left");
 				if (lane > 0) {
 					thePlayer.transform.position = playerPos + moveLeft;
 					lane--;
@@ -61,7 +61,7 @@ public class Scoring : MonoBehaviour {
 			}
 			if (GUI.Button (new Rect (Screen.width - 175 - widthOffset, Screen.height - 100 - heightOffset, 250, 150), "Right")) {
 				;
-				Debug.Log ("You clicked right");
+				//Debug.Log ("You clicked right");
 				if (lane < 2) {
 					thePlayer.transform.position = playerPos + moveRight;
 					lane++;
@@ -85,6 +85,7 @@ public class Scoring : MonoBehaviour {
 	}
 
 	void GameOver(){
+		PlayerPrefs.SetInt ("currentScore", score);
 		if (score > oldHighScore) {
 			PlayerPrefs.SetInt ("highscore", score);
 		}

@@ -7,7 +7,6 @@ public class MoveLeft : MonoBehaviour {
 	private Rigidbody2D body2d;
 	private bool fast = false;
 
-	ScreenFader fadeScr;
 	public int SceneNumb = 1;
 
 	void Awake(){
@@ -22,7 +21,6 @@ public class MoveLeft : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		fadeScr = GameObject.FindObjectOfType<ScreenFader> ();
 	}
 
 	// Update is called once per frame
