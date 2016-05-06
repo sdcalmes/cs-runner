@@ -24,7 +24,7 @@ public class EndGameControl : MonoBehaviour {
 	void OnGUI() {
 
 		GUI.skin.label.fontSize = GUI.skin.box.fontSize = GUI.skin.button.fontSize = fontSize;
-		GUI.Box (new Rect (750, 510, 400, 200), "Score: " + score + "\nHighscore: " + highScore + "\nLeader: " + PlayerPrefs.GetString("hsLeader", "None"));
+		GUI.Box (new Rect (710, 510, 500, 200), "Score: " + score + "\nHighscore: " + highScore + "\nLeader: " + PlayerPrefs.GetString("hsLeader", "None"));
 
 		if (GUI.Button (new Rect (50, heightOffset, 600, 250), "Main Menu")) {
 			Application.LoadLevel (0);
@@ -33,8 +33,9 @@ public class EndGameControl : MonoBehaviour {
 		if (GUI.Button (new Rect (Screen.width - 650 - widthOffset, heightOffset, 600, 250), "Restart Game")) {
 			Application.LoadLevel (1);
 		}
-		if(score >= highScore){
-			hsName = GUI.TextField(new Rect(750, 310, 200, 20), hsName, 25);
+		if(score > highScore){
+			GUI.skin.textField.fontSize = 50;
+			hsName = GUI.TextField(new Rect(710, 310, 500, 75), hsName, 25);
 			PlayerPrefs.SetString ("hsLeader", hsName);
 		}
 	}

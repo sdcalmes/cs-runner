@@ -411,6 +411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4899923aa6f506438f95f391746a738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinAudio: {fileID: 8300000, guid: 6bc04c1f03230f042a9a0832c3c79256, type: 3}
+  obstacleAudio: {fileID: 8300000, guid: 1ea2c1b496913b6448e3726b2040d4c8, type: 3}
   gameOver: 0
   hBar:
   - {fileID: 1296635500}
