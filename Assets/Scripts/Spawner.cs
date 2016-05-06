@@ -62,7 +62,7 @@ public class Spawner : MonoBehaviour {
 				if (delay > .5f) {
 					//Debug.Log ("Lowering Delay!");
 					theScore.GetComponent<Scoring> ().score += 25;
-					delay -= .2f;
+					delay -= .3f;
 				}
 			}
 		}
