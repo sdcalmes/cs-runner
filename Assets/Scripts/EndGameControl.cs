@@ -8,6 +8,7 @@ public class EndGameControl : MonoBehaviour {
 	public int heightOffset;
 	GameObject scoringSystem;
 	private int score;
+	public string hsName = "Enter Name Here";
 	private int highScore;
 
 
@@ -16,24 +17,25 @@ public class EndGameControl : MonoBehaviour {
 	void Start () {
 		score = PlayerPrefs.GetInt ("currentScore", 0);
 		highScore = PlayerPrefs.GetInt ("highscore", 0);
+		Debug.Log (score + "   " + highScore);
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 
 	void OnGUI() {
-		GUI.skin.label.fontSize = GUI.skin.box.fontSize = GUI.skin.button.fontSize = fontSize;
-		GUI.Box (new Rect (750, 510, 400, 100), "Score: " + score + "\nHighscore: " + highScore);
 
-		if (GUI.Button (new Rect (50, Screen.height - heightOffset, 600, 250), "Main Menu")) {
+		GUI.skin.label.fontSize = GUI.skin.box.fontSize = GUI.skin.button.fontSize = fontSize;
+		GUI.Box (new Rect (750, 510, 400, 200), "Score: " + score + "\nHighscore: " + highScore + "\nLeader: " + PlayerPrefs.GetString("hsLeader", "None"));
+
+		if (GUI.Button (new Rect (50, heightOffset, 600, 250), "Main Menu")) {
 			Application.LoadLevel (0);
 		}
 
-		if (GUI.Button (new Rect (Screen.width - 650 - widthOffset, Screen.height - heightOffset, 600, 250), "Restart Game")) {
+		if (GUI.Button (new Rect (Screen.width - 650 - widthOffset, heightOffset, 600, 250), "Restart Game")) {
 			Application.LoadLevel (1);
+		}
+		if(score >= highScore){
+			hsName = GUI.TextField(new Rect(750, 310, 200, 20), hsName, 25);
+			PlayerPrefs.SetString ("hsLeader", hsName);
 		}
 	}
 }

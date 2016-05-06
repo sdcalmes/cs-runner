@@ -4,6 +4,8 @@ using System.Collections;
 
 public class CollisionDetection : MonoBehaviour {
 	GameObject theScore;
+	public AudioClip coinAudio;
+	public AudioClip obstacleAudio;
 	public bool gameOver;
 	private int health = 3;
 	SpriteRenderer sr;
@@ -21,13 +23,17 @@ public class CollisionDetection : MonoBehaviour {
 			//Debug.Log(other);
 			Debug.Log("IN COINS " + gameObject.name);
 			theScore.GetComponent<Scoring> ().score += 50;
+			AudioSource CoinSound = gameObject.AddComponent<AudioSource> ();
+			AudioSource.PlayClipAtPoint (coinAudio, transform.position);
 			Destroy (other.gameObject);
 		} else if (other.name.Equals ("obstacles(Clone)")) {
 			//Debug.Log(other);
-			health--;
+			AudioSource.PlayClipAtPoint (obstacleAudio, transform.position);
 			Debug.Log (other.gameObject);
-			Destroy (other.gameObject);
+			health--;
 			Destroy (hBar [health]);
+			Destroy (other.gameObject);
+
 
 		} else {
 		}

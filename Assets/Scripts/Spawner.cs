@@ -13,6 +13,7 @@ public class Spawner : MonoBehaviour {
 	GameObject theScore;
 	GameObject endGameDetect;
 
+
 	private float[] coinPositions = {-.75f, 0f, .75f};
 	private Vector3 resetCoin = new Vector3 (-5.97f, -3.4f, 0);
 	private Vector3 resetObstacle = new Vector3 (-5.97f, -3.3f, 0);
@@ -21,6 +22,7 @@ public class Spawner : MonoBehaviour {
 	void Start () {
 		theScore = GameObject.Find ("_ScoringSystem");
 		endGameDetect = GameObject.Find ("Character");
+
 		StartCoroutine(PrefabGenerator());
 	}
 
